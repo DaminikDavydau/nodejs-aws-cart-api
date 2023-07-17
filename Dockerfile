@@ -1,9 +1,9 @@
-FROM node:12.16.3-alpine
+FROM node:16.13.0-alpine
 WORKDIR /app
 
 # Optimization - Do not download deps if they were not changed and clean cache after install 
 COPY package*.json ./
-RUN npm install --only=production && npm cache clean --force
+RUN npm install && npm cache clean --force
 
 COPY * ./
 RUN npm run build
